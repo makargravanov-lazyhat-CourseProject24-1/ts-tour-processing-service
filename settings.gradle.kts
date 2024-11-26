@@ -1,0 +1,1 @@
+rootProject.name = "ts-tour-processing-service"
