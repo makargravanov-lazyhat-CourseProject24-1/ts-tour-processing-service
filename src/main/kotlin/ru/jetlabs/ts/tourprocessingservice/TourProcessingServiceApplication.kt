@@ -1,7 +1,0 @@
-package ru.jetlabs.ts.tourprocessingservice
-
-import org.springframework.boot.autoconfigure.SpringBootApplication
-
-@SpringBootApplication
-@Enable
-class TourProcessingServiceApplication
