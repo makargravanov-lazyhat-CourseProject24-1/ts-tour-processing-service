@@ -84,8 +84,12 @@ sealed interface GetTourByIdResult {
 object Tours : LongIdTable("tours") {
     val name = varchar("name", 255)
     val description = varchar("description", 255)
+    val hotelId = long("hotel_id")
+    val roomId = long("room_id")
+    val nutritionId = long("nutrition_id")
     val startDate = date("start_date")
     val endDate = date("end_date")
+    val personCount = integer("person_count")
 }
 
 class TourDao(id: EntityID<Long>) : LongEntity(id) {
@@ -93,22 +97,34 @@ class TourDao(id: EntityID<Long>) : LongEntity(id) {
 
     var name by Tours.name
     var description by Tours.description
+    var hotelId by Tours.hotelId
+    var roomId by Tours.roomId
+    var nutritionId by Tours.nutritionId
     var startDate by Tours.startDate
     var endDate by Tours.endDate
+    var personCount by Tours.personCount
 }
 
 data class Tour(
     val id: Long,
     val name: String,
     val description: String,
+    val hotelId: Long,
+    val roomId: Long,
+    val nutritionId: Long,
     val startDate: LocalDate,
     val endDate: LocalDate,
+    val personCount: Int,
 )
 
 fun TourDao.mapToTour(): Tour = Tour(
     id = id.value,
     name = name,
     description = description,
+    hotelId = hotelId,
+    roomId = roomId,
+    nutritionId = nutritionId,
     startDate = startDate,
-    endDate = endDate
+    endDate = endDate,
+    personCount = personCount,
 )
